@@ -19,8 +19,8 @@ void main() {
   group('Use case: Get Photos', () {
     test('Should get a list of photos', () async {
       //Arrange
-      var tPhotoList = <PhotoEntity>[
-        const PhotoEntity(
+      var tPhotoList = <Photo>[
+        const Photo(
           photoId: 'photoId1',
           photoUrl: 'www.someUrl.com',
           photoDescription: 'My photo description',
