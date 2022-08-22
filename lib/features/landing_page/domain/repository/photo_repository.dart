@@ -4,5 +4,5 @@ import '../../../../core/error/faillure.dart';
 import '../entities/photo.dart';
 
 abstract class PhotoRepository {
-  Future<Either<Failure, List<PhotoEntity>>> getPhotos();
+  Future<Either<Failure, List<Photo>>> getPhotos();
 }

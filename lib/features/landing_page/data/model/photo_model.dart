@@ -1,6 +1,6 @@
 import 'package:greisy_photos/features/landing_page/domain/entities/photo.dart';
 
-class PhotoModel extends PhotoEntity {
+class PhotoModel extends Photo {
   const PhotoModel({
     required super.photoId,
     required super.photoUrl,
