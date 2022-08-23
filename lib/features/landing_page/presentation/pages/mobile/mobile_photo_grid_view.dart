@@ -1,12 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:greisy_photos/features/landing_page/domain/entities/photo.dart';
-import 'package:greisy_photos/features/landing_page/presentation/bloc/photo/photo_bloc.dart';
 
-import '../../../../../core/constants/routes.dart';
 import '../../widgets/card_content.dart';
 
 ///Widget that shows you a list of shows

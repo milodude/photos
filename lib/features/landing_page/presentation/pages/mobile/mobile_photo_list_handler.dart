@@ -10,6 +10,7 @@ class MobilePhotoListHandler extends StatefulWidget {
   const MobilePhotoListHandler({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PhotoState createState() => _PhotoState();
 }
 
