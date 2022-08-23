@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:greisy_photos/core/constants/access.dart';
 import 'package:greisy_photos/core/error/faillure.dart';
 import 'package:greisy_photos/core/providers/url_provider.dart';
 import 'package:greisy_photos/features/landing_page/data/data_source/photo_data_source.dart';
@@ -37,6 +38,7 @@ void main() {
       'Content-type': 'application/json; charset=utf-8',
       'Accept': '*/*',
       'Access-Control-Allow-Origin': '*',
+      'Authorization': accessKey,
     })).thenAnswer((_) async => Future.value(http.Response(
             fixture('photo/photo_list_fixture.json'), 200,
             headers: {
@@ -59,6 +61,7 @@ void main() {
         'Content-type': 'application/json; charset=utf-8',
         'Accept': '*/*',
         'Access-Control-Allow-Origin': '*',
+        'Authorization': accessKey,
       }));
     });
   });

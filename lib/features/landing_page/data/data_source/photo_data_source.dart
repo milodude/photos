@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:greisy_photos/core/constants/access.dart';
 import 'package:greisy_photos/features/landing_page/data/model/photo_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,6 +25,7 @@ class PhotoDataSource implements PhotoRepositoryDataSource {
       'Content-type': 'application/json; charset=utf-8',
       'Accept': '*/*',
       'Access-Control-Allow-Origin': '*',
+      'Authorization': accessKey,
     });
     if (response.statusCode == 200) {
       var decodedJson = json.decode(response.body);
