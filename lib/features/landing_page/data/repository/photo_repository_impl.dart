@@ -12,7 +12,6 @@ class PhotoRepositoryImpl extends PhotoRepository {
 
   @override
   Future<Either<Failure, List<PhotoModel>>> getPhotos() async {
-    // TODO: implement getPhotos
     try {
       var result = await photoDataSource.getPhotos();
       return Right(result);
