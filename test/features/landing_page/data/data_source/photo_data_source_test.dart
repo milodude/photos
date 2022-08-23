@@ -22,6 +22,8 @@ void main() {
       PhotoDataSource(httpClient: mockClient, urlProvider: mockUrlProvider);
   final tPhotoListResponse =
       json.decode(fixture('photo/photo_list_fixture.json'));
+  final tPhotoDetailsResponse =
+      json.decode(fixture('photo/photo_details_fixture.json'));
 
   List<PhotoModel> _getList() {
     List<PhotoModel> photoList = <PhotoModel>[];
@@ -33,7 +35,7 @@ void main() {
   }
 
   void setUpHttpCallSuccess200() {
-    final uri = UrlProvider().getUrl('/photo', {});
+    final uri = UrlProvider().getUrl('/photos', {});
     when(mockClient.get(uri, headers: {
       'Content-type': 'application/json; charset=utf-8',
       'Accept': '*/*',
@@ -81,7 +83,7 @@ void main() {
         'Should throw a serverException when the respond is 404 or other when getting a list of photos',
         () async {
       //Arrange
-      final uri = UrlProvider().getUrl('/photo', {});
+      final uri = UrlProvider().getUrl('/photos', {});
       when(mockUrlProvider.getUrl(any, any))
           .thenAnswer((realInvocation) => uri);
 
@@ -91,6 +93,49 @@ void main() {
       );
       //Act
       final call = photoDataSource.getPhotos();
+      //Assert
+      expect(() => call, throwsA(const TypeMatcher<ServerFailure>()));
+    });
+
+    test('Should get a photo details', () async {
+      //Arrange
+      var photoId = 'photoId';
+      final uri = UrlProvider().getUrl('/photo/$photoId', {});
+      when(mockUrlProvider.getUrl(any, any))
+          .thenAnswer((realInvocation) => uri);
+
+      when(mockClient.get(uri, headers: {
+        'Content-type': 'application/json; charset=utf-8',
+        'Accept': '*/*',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': accessKey,
+      })).thenAnswer((_) async => Future.value(http.Response(
+              fixture('photo/photo_details_fixture.json'), 200,
+              headers: {
+                HttpHeaders.contentTypeHeader:
+                    'application/json; charset=utf-8',
+              })));
+      //Act
+      final result = await photoDataSource.getPhoto(photoId);
+      //Assert
+      var expectedDetails = PhotoModel.fromJson(tPhotoDetailsResponse);
+      expect(result, equals(expectedDetails));
+    });
+
+    test('Should throw a serverException when getting a photo details',
+        () async {
+      //Arrange
+      var photoId = 'photoId';
+      final uri = UrlProvider().getUrl('/photo/$photoId', {});
+      when(mockUrlProvider.getUrl(any, any))
+          .thenAnswer((realInvocation) => uri);
+
+      when(mockClient.get(uri, headers: anyNamed('headers'))).thenAnswer(
+        (realInvocation) async =>
+            http.Response('Something went wrong while getting clients', 404),
+      );
+      //Act
+      final call = photoDataSource.getPhoto(photoId);
       //Assert
       expect(() => call, throwsA(const TypeMatcher<ServerFailure>()));
     });

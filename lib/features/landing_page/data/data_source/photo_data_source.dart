@@ -42,8 +42,23 @@ class PhotoDataSource implements PhotoRepositoryDataSource {
   }
 
   @override
-  Future<PhotoModel> getPhoto(String photoId) {
-    // TODO: implement getPhoto
-    throw UnimplementedError();
+  Future<PhotoModel> getPhoto(String photoId) async {
+    Uri uri = urlProvider.getUrl('/photo/$photoId', {});
+
+    var response = await httpClient.get(uri, headers: {
+      'Content-type': 'application/json; charset=utf-8',
+      'Accept': '*/*',
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': accessKey,
+    });
+
+    if (response.statusCode == 200) {
+      var decodedJson = json.decode(response.body);
+      PhotoModel photoDetails = PhotoModel.fromJson(decodedJson);
+      return photoDetails;
+    } else {
+      throw ServerFailure(
+          'Something went wrong while requesting photo details');
+    }
   }
 }
