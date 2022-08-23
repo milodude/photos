@@ -9,6 +9,7 @@ import '../../../../core/providers/url_provider.dart';
 
 abstract class PhotoRepositoryDataSource {
   Future<List<PhotoModel>> getPhotos();
+  Future<PhotoModel> getPhoto(String photoId);
 }
 
 class PhotoDataSource implements PhotoRepositoryDataSource {
@@ -38,5 +39,11 @@ class PhotoDataSource implements PhotoRepositoryDataSource {
     } else {
       throw ServerFailure('Something went wrong while requesting photo list');
     }
+  }
+
+  @override
+  Future<PhotoModel> getPhoto(String photoId) {
+    // TODO: implement getPhoto
+    throw UnimplementedError();
   }
 }

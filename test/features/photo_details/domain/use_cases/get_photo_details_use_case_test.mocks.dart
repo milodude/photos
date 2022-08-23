@@ -45,12 +45,4 @@ class MockPhotoDetailsRepository extends _i1.Mock
                   _FakeEither_0<_i5.Failure, _i6.Photo>(
                       this, Invocation.method(#getPhoto, [photoId]))))
           as _i4.Future<_i2.Either<_i5.Failure, _i6.Photo>>);
-  @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Photo>>> getPhotos() =>
-      (super.noSuchMethod(Invocation.method(#getPhotos, []),
-              returnValue:
-                  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Photo>>>.value(
-                      _FakeEither_0<_i5.Failure, List<_i6.Photo>>(
-                          this, Invocation.method(#getPhotos, []))))
-          as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Photo>>>);
 }
