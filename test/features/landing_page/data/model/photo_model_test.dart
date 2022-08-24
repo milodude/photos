@@ -42,7 +42,7 @@ void main() {
       //Assert
       expect(result.photoId, equals(tPhotoModel.photoId));
       expect(result.photoUrl, equals(tPhotoModel.photoUrl));
-      expect(result.photoDescription, equals(tPhotoModel.photoDescription));
+      expect(result.photoDescription, equals('No description Available'));
       expect(result.likes, equals(tPhotoModel.likes));
       expect(result.profileImage, equals(tPhotoModel.profileImage));
       expect(result.name, equals(tPhotoModel.name));
