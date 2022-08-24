@@ -7,6 +7,7 @@ import 'package:greisy_photos/features/landing_page/presentation/bloc/photo/phot
 
 import 'app_module.dart';
 import 'features/photo_details/presentation/bloc/photo_details/photo_details_bloc.dart';
+import 'features/user_profile/presentation/bloc/user_profile/user_profile_bloc.dart';
 import 'injection_container.dart' as di;
 import 'injection_container.dart';
 
@@ -24,6 +25,7 @@ class AppState extends StatelessWidget {
       providers: [
         BlocProvider<PhotoBloc>(create: (_) => sl<PhotoBloc>()),
         BlocProvider<PhotoDetailsBloc>(create: (_) => sl<PhotoDetailsBloc>()),
+        BlocProvider<UserProfileBloc>(create: (_) => sl<UserProfileBloc>()),
       ],
       child: const PhotoApp(),
     );

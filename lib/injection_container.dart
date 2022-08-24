@@ -1,4 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:greisy_photos/features/user_profile/data/data_source/user_profile_data_source.dart';
+import 'package:greisy_photos/features/user_profile/data/repository/user_profile_repository_impl.dart';
+import 'package:greisy_photos/features/user_profile/domain/repository/user_profile_repository.dart';
+import 'package:greisy_photos/features/user_profile/domain/use_cases/get_user_profile_use_case.dart';
+import 'package:greisy_photos/features/user_profile/presentation/bloc/user_profile/user_profile_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import 'core/providers/url_provider.dart';
@@ -22,8 +27,7 @@ Future<void> init() async {
   // pagina anterior. Si llegamos a a hacer un dispose puede que hayamos eliminado ese singleton y va a traernos un error.
   sl.registerFactory(() => PhotoBloc(getPhotoUseCase: sl()));
   sl.registerFactory(() => PhotoDetailsBloc(getPhotoDetailsUseCase: sl()));
-
-  // sl.registerFactory(() => SingleClientBloc(addClientUseCase: sl()));
+  sl.registerFactory(() => UserProfileBloc(getUserProfileUseCase: sl()));
 
   //Al no mantener estados en el caso de uso, no es necesario tener una factoria
   //!Use Cases
@@ -31,15 +35,20 @@ Future<void> init() async {
       () => GetPhotoUseCase(photoRepository: sl()));
   sl.registerLazySingleton<GetPhotoDetailsUseCase>(
       () => GetPhotoDetailsUseCase(photoDetailsRepository: sl()));
+  sl.registerLazySingleton<GetUserProfileUseCase>(
+      () => GetUserProfileUseCase(userProfileRepository: sl()));
   //!Repository
   sl.registerLazySingleton<PhotoRepository>(
       () => PhotoRepositoryImpl(photoDataSource: sl()));
   sl.registerLazySingleton<PhotoDetailsRepository>(
       () => PhotoDetailsRepositoryImpl(photoDataSource: sl()));
-
+  sl.registerLazySingleton<UserProfileRepository>(
+      () => UserProfileRepositoryImpl(userProfileDataSource: sl()));
   //!Data Sources
   sl.registerLazySingleton<PhotoDataSource>(
       () => PhotoDataSource(httpClient: sl(), urlProvider: sl()));
+  sl.registerLazySingleton<UserProfileDataSource>(
+      () => UserProfileDataSource(httpClient: sl(), urlProvider: sl()));
 
   //! Core
   sl.registerLazySingleton(() => http.Client());
