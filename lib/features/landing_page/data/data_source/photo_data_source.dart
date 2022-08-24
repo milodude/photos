@@ -43,7 +43,7 @@ class PhotoDataSource implements PhotoRepositoryDataSource {
 
   @override
   Future<PhotoModel> getPhoto(String photoId) async {
-    Uri uri = urlProvider.getUrl('/photo/$photoId', {});
+    Uri uri = urlProvider.getUrl('/photos/$photoId', {});
 
     var response = await httpClient.get(uri, headers: {
       'Content-type': 'application/json; charset=utf-8',
