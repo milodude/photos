@@ -23,27 +23,24 @@ class TopTitleMobile extends StatelessWidget {
         children: [
           Expanded(
               flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 12.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    SizedBox(
-                      height: 6,
-                      child: Icon(
-                        Icons.remove,
-                        size: 34,
-                      ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  SizedBox(
+                    height: 6,
+                    child: Icon(
+                      Icons.remove,
+                      size: 34,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 5, bottom: 25),
-                      child: Icon(
-                        Icons.remove,
-                        size: 34,
-                      ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 5, bottom: 25),
+                    child: Icon(
+                      Icons.remove,
+                      size: 34,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )),
           const Expanded(
             flex: 9,
