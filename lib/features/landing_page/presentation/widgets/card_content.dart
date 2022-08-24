@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../core/constants/routes.dart';
 import '../../domain/entities/photo.dart';
 
 class CardContent extends StatelessWidget {
@@ -20,10 +22,8 @@ class CardContent extends StatelessWidget {
           child: InkWell(
             key: const Key('SliverInkwell'),
             onTap: () {
-              //TODO: need to show details
-              // Modular.to
-              //     .pushNamed('$imageDetailsPageRouteName/${photo.photoId}');
-              //ImageDetails(photo: photo);
+              Modular.to
+                  .pushNamed('$imageDetailsPageRouteName/${photo.photoId}');
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
