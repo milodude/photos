@@ -29,7 +29,7 @@ class AppModule extends Module {
         ),
         ChildRoute<dynamic>('$imageDetailsPageRouteName/:photoId',
             child: (BuildContext context, args) {
-          return MobilePhotoListHandler(photoId: args.params['photoId']);
+          return MobilePhotoDetailsHandler(photoId: args.params['photoId']);
         }),
         ChildRoute<dynamic>('$userProfilePageRouteName/:userName',
             child: (BuildContext context, args) {

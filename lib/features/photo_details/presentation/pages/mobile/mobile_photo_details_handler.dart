@@ -6,10 +6,10 @@ import 'package:greisy_photos/features/photo_details/presentation/pages/mobile/m
 import '../../bloc/photo_details/photo_details_bloc.dart';
 
 ///Widget that renders a photo details
-class MobilePhotoListHandler extends StatefulWidget {
+class MobilePhotoDetailsHandler extends StatefulWidget {
   final String photoId;
 
-  const MobilePhotoListHandler({
+  const MobilePhotoDetailsHandler({
     Key? key,
     required this.photoId,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class MobilePhotoListHandler extends StatefulWidget {
   _PhotoState createState() => _PhotoState();
 }
 
-class _PhotoState extends State<MobilePhotoListHandler> {
+class _PhotoState extends State<MobilePhotoDetailsHandler> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PhotoDetailsBloc, PhotoDetailsState>(builder: (
@@ -44,7 +44,7 @@ class _PhotoState extends State<MobilePhotoListHandler> {
           ],
         );
       } else if (state is PhotoDetailsLoaded) {
-        return MobilePhotodetailsPage(photoDetails: state.photoDetails);
+        return MobilePhotoDetailsPage(photoDetails: state.photoDetails);
       } else if (state is Error) {
         return const Center(child: Text('Could not load details'));
       }
