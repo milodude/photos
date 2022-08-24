@@ -1,6 +1,5 @@
 import 'package:greisy_photos/features/user_profile/domain/entity/user_profile.dart';
 
-import '../../../landing_page/data/model/photo_model.dart';
 import 'aux_photo_model.dart';
 
 class UserProfileModel extends UserProfile {
