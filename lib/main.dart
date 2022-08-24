@@ -10,6 +10,7 @@ import 'app_module.dart';
 import 'features/landing_page/presentation/pages/desktop/desktop_landing_page.dart';
 import 'features/landing_page/presentation/pages/mobile/mobile_landing_page.dart';
 import 'features/landing_page/presentation/pages/responsive_layout.dart';
+import 'features/photo_details/presentation/bloc/photo_details/photo_details_bloc.dart';
 import 'injection_container.dart' as di;
 import 'injection_container.dart';
 
@@ -26,6 +27,7 @@ class AppState extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<PhotoBloc>(create: (_) => sl<PhotoBloc>()),
+        BlocProvider<PhotoDetailsBloc>(create: (_) => sl<PhotoDetailsBloc>()),
       ],
       child: const PhotoApp(),
     );
@@ -42,17 +44,14 @@ class PhotoApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
 
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData().copyWith(
         textTheme: GoogleFonts.josefinSansTextTheme(),
       ),
-      home: const ResponsiveLayout(
-        desktopPage: DesktopLandingPage(),
-        mobilePage: MobileLandingPage(),
-        tabletPage: TabletLandingPage(),
-      ),
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
     );
   }
 }
