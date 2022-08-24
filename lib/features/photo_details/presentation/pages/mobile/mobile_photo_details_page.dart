@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:greisy_photos/core/common_widgets/back_icon_button.dart';
 
 import 'package:greisy_photos/features/landing_page/domain/entities/photo.dart';
 
 import '../../../../../core/constants/routes.dart';
 
-class MobilePhotodetailsPage extends StatelessWidget {
+class MobilePhotoDetailsPage extends StatelessWidget {
   final Photo photoDetails;
 
-  const MobilePhotodetailsPage({
+  const MobilePhotoDetailsPage({
     Key? key,
     required this.photoDetails,
   }) : super(key: key);
@@ -17,11 +18,9 @@ class MobilePhotodetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var heigth = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
     return SafeArea(
       child: Scaffold(
         body: Stack(
-          // fit: StackFit.expand,
           children: [
             Positioned(
               child: SizedBox(
@@ -41,18 +40,11 @@ class MobilePhotodetailsPage extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 59,
               left: 26,
-              child: GestureDetector(
-                child: const Icon(
-                  Icons.highlight_off,
-                  color: Colors.white,
-                  size: 37,
-                ),
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
+              child: BackIconButton(
+                buttonColor: Colors.white,
               ),
             ),
             Positioned(
@@ -76,34 +68,34 @@ class MobilePhotodetailsPage extends StatelessWidget {
               ),
             ),
             Positioned(
-                top: heigth - heigth * 0.17,
-                left: 12,
-                child: SizedBox(
-                  width: width - width * 0.2,
-                  child: ListTile(
-                    leading: ClipOval(
-                        child: Image.network(
-                      photoDetails.profileImage,
-                      scale: 0.7,
-                    )),
-                    title: Text(
-                      photoDetails.name,
-                      style: const TextStyle(fontSize: 14, color: Colors.white),
-                    ),
-                    subtitle: Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Modular.to.pushNamed(
-                              '$userProfilePageRouteName/${photoDetails.userName}');
-                        },
-                        child: const Text('View profile',
-                            style:
-                                TextStyle(fontSize: 12, color: Colors.white)),
-                      ),
+              top: heigth - heigth * 0.17,
+              left: 12,
+              child: SizedBox(
+                width: width - width * 0.2,
+                child: ListTile(
+                  leading: ClipOval(
+                      child: Image.network(
+                    photoDetails.profileImage,
+                    scale: 0.7,
+                  )),
+                  title: Text(
+                    photoDetails.name,
+                    style: const TextStyle(fontSize: 14, color: Colors.white),
+                  ),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(left: 4.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Modular.to.pushNamed(
+                            '$userProfilePageRouteName/${photoDetails.userName}');
+                      },
+                      child: const Text('View profile',
+                          style: TextStyle(fontSize: 12, color: Colors.white)),
                     ),
                   ),
-                )),
+                ),
+              ),
+            ),
           ],
         ),
       ),
