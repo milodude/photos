@@ -4,12 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greisy_photos/features/landing_page/presentation/bloc/photo/photo_bloc.dart';
-import 'package:greisy_photos/features/landing_page/presentation/pages/tablet/table_landing_page.dart';
 
 import 'app_module.dart';
-import 'features/landing_page/presentation/pages/desktop/desktop_landing_page.dart';
-import 'features/landing_page/presentation/pages/mobile/mobile_landing_page.dart';
-import 'features/landing_page/presentation/pages/responsive_layout.dart';
 import 'features/photo_details/presentation/bloc/photo_details/photo_details_bloc.dart';
 import 'injection_container.dart' as di;
 import 'injection_container.dart';

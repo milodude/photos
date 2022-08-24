@@ -12,10 +12,23 @@ class PhotoModel extends Photo {
   });
 
   factory PhotoModel.fromJson(Map<String, dynamic> photo) {
+    String? altDes = photo['alt_description'];
+    String? des = photo['description'];
+    String description = '';
+    bool hasNoDescription = false;
+    if (des != null) {
+      description = des;
+    } else if (altDes != null) {
+      description = altDes;
+    } else {
+      hasNoDescription = !hasNoDescription;
+    }
+
     return PhotoModel(
       photoId: photo['id'],
       photoUrl: photo['urls']['full'],
-      photoDescription: photo['description'] ?? '',
+      photoDescription:
+          hasNoDescription ? 'No description Available' : description,
       likes: photo['likes'],
       profileImage: photo['user']['profile_image']['small'] ??
           photo['user']['profile_image']['medium'],
