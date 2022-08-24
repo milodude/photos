@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:greisy_photos/features/landing_page/domain/entities/photo.dart';
+
+import '../../../../../core/constants/routes.dart';
 
 class MobilePhotodetailsPage extends StatelessWidget {
   final Photo photoDetails;
@@ -87,10 +90,17 @@ class MobilePhotodetailsPage extends StatelessWidget {
                       photoDetails.name,
                       style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
-                    subtitle: const Padding(
-                      padding: EdgeInsets.only(left: 4.0),
-                      child: Text('View profile',
-                          style: TextStyle(fontSize: 12, color: Colors.white)),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.only(left: 4.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Modular.to.pushNamed(
+                              '$userProfilePageRouteName/${photoDetails.userName}');
+                        },
+                        child: const Text('View profile',
+                            style:
+                                TextStyle(fontSize: 12, color: Colors.white)),
+                      ),
                     ),
                   ),
                 )),
