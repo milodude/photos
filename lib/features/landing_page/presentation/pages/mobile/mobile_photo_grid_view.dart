@@ -5,7 +5,7 @@ import 'package:greisy_photos/features/landing_page/domain/entities/photo.dart';
 
 import '../../widgets/card_content.dart';
 
-///Widget that shows you a list of shows
+///Widget that shows you a list of photos
 class PhotosGridView extends StatelessWidget {
   ///Constructor that takes  a list of shows.
   const PhotosGridView({
