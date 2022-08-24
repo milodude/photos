@@ -23,6 +23,10 @@ void main() {
       photosUrl: <String>[]);
 
   group('User profile bloc tests: ', () {
+    setUp(() {
+      bloc.close();
+      bloc = UserProfileBloc(getUserProfileUseCase: useCase);
+    });
     blocTest('emits [] when nothing is added',
         build: () => bloc,
         expect: () => [],
@@ -36,7 +40,7 @@ void main() {
           return bloc;
         },
         act: (bloc) =>
-            bloc.add(const GetUserProfileEvent(userName: 'someUser')),
+            bloc.add(const GetUserProfileEvent(userName: 'SomeUserName')),
         expect: () => <UserProfileState>[
               UserProfileLoading(),
               UserProfileLoaded(userProfile: tUserProfile)
@@ -53,7 +57,7 @@ void main() {
           return bloc;
         },
         act: (bloc) =>
-            bloc.add(const GetUserProfileEvent(userName: 'someUser')),
+            bloc.add(const GetUserProfileEvent(userName: 'SomeUserName')),
         expect: () => <UserProfileState>[
               UserProfileLoading(),
               const UserProfileError(errorMessage: serverException)
