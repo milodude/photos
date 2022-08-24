@@ -65,26 +65,26 @@ void main() {
         'When having alt_description and no description should set alt_description',
         (tester) async {
       //Arrange
-      var alt_description = 'Some alt_description';
+      var altDescription = 'Some alt_description';
       final Map<String, dynamic> decoded =
           json.decode(fixture('photo/photo_description_case2.json'));
       //Act
       var result = PhotoModel.fromJson(decoded);
       //Assert
-      expect(alt_description, equals(result.photoDescription));
+      expect(altDescription, equals(result.photoDescription));
     });
 
     testWidgets(
         'When having no alt_description and no description should set default text',
         (tester) async {
       //Arrange
-      var no_description = 'No description Available';
+      var noDescription = 'No description Available';
       final Map<String, dynamic> decoded =
           json.decode(fixture('photo/photo_fixture.json'));
       //Act
       var result = PhotoModel.fromJson(decoded);
       //Assert
-      expect(no_description, equals(result.photoDescription));
+      expect(noDescription, equals(result.photoDescription));
     });
   });
 }
