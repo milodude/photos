@@ -5,6 +5,7 @@ import 'package:greisy_photos/core/common_widgets/back_icon_button.dart';
 
 import 'package:greisy_photos/features/user_profile/domain/entity/user_profile.dart';
 
+import '../../widgets/my_photos_title.dart';
 import '../../widgets/profile_portfolio_cards_builder.dart';
 import '../../widgets/user_info.dart';
 

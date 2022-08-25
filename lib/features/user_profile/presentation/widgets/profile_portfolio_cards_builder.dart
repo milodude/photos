@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/entity/user_profile.dart';
+import 'carousel.dart';
 
 class ProfilePortfolioCardsBuilder extends StatelessWidget {
   const ProfilePortfolioCardsBuilder({
@@ -21,7 +22,10 @@ class ProfilePortfolioCardsBuilder extends StatelessWidget {
         child: InkWell(
           key: const Key('SliverInkwell'),
           onTap: () {
-            //TODO:Ver de mostrar todas las fotos con un carrousel
+            showModalBottomSheet(
+                context: context,
+                builder: (context) =>
+                    CarouselWidget(urls: userProfile.photosUrl));
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
@@ -35,21 +39,6 @@ class ProfilePortfolioCardsBuilder extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class MyProfileMyPhotosTitle extends StatelessWidget {
-  const MyProfileMyPhotosTitle({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'My Photos',
-      style: TextStyle(
-          fontSize: 42, color: Colors.black, fontWeight: FontWeight.bold),
     );
   }
 }
