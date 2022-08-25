@@ -41,7 +41,7 @@ class PhotoApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-
+    Modular.setInitialRoute(Modular.initialRoute);
     return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

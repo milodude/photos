@@ -16,7 +16,7 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => <ModularRoute>[
         ChildRoute<dynamic>(
-          landingPageRouteName,
+          Modular.initialRoute,
           child: (
             BuildContext context,
             dynamic args,
@@ -28,10 +28,12 @@ class AppModule extends Module {
           ),
         ),
         ChildRoute<dynamic>('$imageDetailsPageRouteName/:photoId',
+            transition: TransitionType.leftToRight,
             child: (BuildContext context, args) {
           return MobilePhotoDetailsHandler(photoId: args.params['photoId']);
         }),
         ChildRoute<dynamic>('$userProfilePageRouteName/:userName',
+            transition: TransitionType.fadeIn,
             child: (BuildContext context, args) {
           return MobileUserProfileHandler(userName: args.params['userName']);
         }),
