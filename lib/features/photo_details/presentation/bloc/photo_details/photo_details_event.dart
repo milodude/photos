@@ -15,3 +15,5 @@ class GetPhotoDetailsEvent extends PhotoDetailsEvent {
     required this.photoId,
   });
 }
+
+class ClearPhotoDetailsEvent extends PhotoDetailsEvent {}

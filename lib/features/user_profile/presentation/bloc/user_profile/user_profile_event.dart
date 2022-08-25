@@ -14,3 +14,5 @@ class GetUserProfileEvent extends UserProfileEvent {
     required this.userName,
   });
 }
+
+class ClearUserProfileEvent extends UserProfileEvent {}

@@ -25,6 +25,10 @@ class PhotoDetailsBloc extends Bloc<PhotoDetailsEvent, PhotoDetailsState> {
           },
         );
       }
+
+      if (event is ClearPhotoDetailsEvent) {
+        emit(PhotoDetailsInitial());
+      }
     });
   }
 }

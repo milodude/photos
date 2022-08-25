@@ -24,6 +24,9 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
           },
         );
       }
+      if (event is ClearUserProfileEvent) {
+        emit(UserProfileInitial());
+      }
     });
   }
 }
