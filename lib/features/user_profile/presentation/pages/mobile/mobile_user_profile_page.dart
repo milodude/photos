@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:greisy_photos/core/common_widgets/back_icon_button.dart';
 
 import 'package:greisy_photos/features/user_profile/domain/entity/user_profile.dart';
@@ -15,6 +16,10 @@ class MobileUserProfilePage extends StatelessWidget {
     required this.userProfile,
   }) : super(key: key);
 
+  void backButtonAction(BuildContext context) {
+    Modular.to.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     var heigth = MediaQuery.of(context).size.height;
@@ -26,8 +31,9 @@ class MobileUserProfilePage extends StatelessWidget {
             Positioned(
               top: heigth - heigth * 0.92,
               left: 26,
-              child: const BackIconButton(
+              child: BackIconButton(
                 buttonColor: Colors.black,
+                backAction: backButtonAction,
               ),
             ),
             Positioned(

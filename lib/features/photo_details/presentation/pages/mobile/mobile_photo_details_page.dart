@@ -14,6 +14,10 @@ class MobilePhotoDetailsPage extends StatelessWidget {
     required this.photoDetails,
   }) : super(key: key);
 
+  void backButtonAction(BuildContext context) {
+    Modular.to.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     var heigth = MediaQuery.of(context).size.height;
@@ -40,11 +44,12 @@ class MobilePhotoDetailsPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               top: 59,
               left: 26,
               child: BackIconButton(
                 buttonColor: Colors.white,
+                backAction: backButtonAction,
               ),
             ),
             Positioned(
